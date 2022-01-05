@@ -1,2 +1,1 @@
 # revolution
-# Atom Editor setup
