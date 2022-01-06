@@ -1,2 +1,2 @@
 use test
-db.traffic.findOne()
+db.traffic.find()
