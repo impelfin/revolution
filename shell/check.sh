@@ -3,10 +3,10 @@
 mongodb=$(ps -ef | grep 'node' | grep 'mongo')
 mysql=$(ps -ef | grep 'node' | grep 'mysql')
 
-second1=$(echo ${mongodb} | cut -d " " -f2) 
-second2=$(echo ${mysql} | cut -d " " -f2) 
+second1=$(echo ${mongodb} | cut -d " " -f2)
+second2=$(echo ${mysql} | cut -d " " -f2)
 
-for var in $second1 $second2 
+for var in $second1 $second2
 do
 #	echo $var
 	if [ -n ${var} ]
