@@ -7,7 +7,7 @@ const app = express()
 app.set('port', process.env.PORT || 3000)
 app.use(morgan('dev'))
 
-var db; 
+var db;
 var databaseUrl = 'mongodb://13.125.8.3:27017/'
 
 app.get('/', (req, res) => {
@@ -21,7 +21,7 @@ app.get('/emp', (req, res) => {
 		}else{
 			db = database.db('test')
 			db.collection('emp').find({}).toArray(function(err, result){
-				if(err) throw err 
+				if(err) throw err
 				console.log('result : ')
 				console.log(result)
 				res.json(JSON.stringify(result))
@@ -37,7 +37,7 @@ app.get('/bios', (req, res) => {
 		}else{
 			db = database.db('test')
 			db.collection('bios').find({}).toArray(function(err, result){
-				if(err) throw err 
+				if(err) throw err
 				console.log('result : ')
 				console.log(result)
 				res.json(JSON.stringify(result))
@@ -53,7 +53,7 @@ app.get('/foo', (req, res) => {
 		}else{
 			db = database.db('test')
 			db.collection('bios').find({}).toArray(function(err, result){
-				if(err) throw err 
+				if(err) throw err
 				console.log('result : ')
 				console.log(result)
 				res.json(JSON.stringify(result))
@@ -64,4 +64,4 @@ app.get('/foo', (req, res) => {
 
 app.listen(app.get('port'), () =>{
 	console.log('서버 실행 중')
-}); 
+});
