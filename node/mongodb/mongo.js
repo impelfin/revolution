@@ -64,4 +64,8 @@ app.get('/foo', (req, res) => {
 
 app.listen(app.get('port'), () =>{
 	console.log('서버 실행 중')
+<<<<<<< HEAD
 });
+=======
+}); 
+>>>>>>> 42da3fcd3fb25a0f676141e21480510d64581a59
