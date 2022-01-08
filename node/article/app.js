@@ -26,7 +26,6 @@ const articleSchema = new mongoose.Schema({
 
 const Article = mongoose.model("Article", articleSchema);
 
-
 //////////////////// Request targeting All Articles ////////////////
 app.route("/articles")
   .get(function(req, res) {
