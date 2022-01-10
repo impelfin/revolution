@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 //define scheme
 var userSchema = mongoose.Schema({
       userid: String,
-      sex : String,
       city : String,
+      sex : String,
       age : Number
 });
 
@@ -34,9 +34,10 @@ router.get('/get', function(req, res, next) {
 // insert
 router.post('/insert', function(req, res, next) {
       var userid = req.body.userid;
-      var sex = req.body.sex;
       var city = req.body.city;
-      var user = new User({'userid':userid,'sex':sex,'city':city});
+      var sex = req.body.sex;
+      var age = req.body.age;
+      var user = new User({'userid':userid,'city':city,'sex':sex,'age':age});
 
       user.save(function(err,silence){
              if(err){
@@ -51,8 +52,9 @@ router.post('/insert', function(req, res, next) {
 // update
 router.post('/update', function(req, res, next) {
       var userid = req.body.userid;
-      var sex = req.body.sex;
       var city = req.body.city;
+      var sex = req.body.sex;
+      var age = req.body.age;
       User.findOne({'userid':userid},function(err,user){
            if(err){
                console.log(err);
@@ -61,6 +63,7 @@ router.post('/update', function(req, res, next) {
           }
            user.sex = sex;
            user.city = city;
+           user.age = age;
            user.save(function(err,silence){
                   if(err){
                      console.log(err);
@@ -88,17 +91,31 @@ router.post('/delete', function(req, res, next) {
 
 module.exports = router;
 
-// select city from users where userid='terry'
-User.findOne({'userid':'terry'}).select('city').exec(function(err,user){
-      console.log("q1");
+// select * from users
+User.find({}).exec(function(err,user){
+      console.log("Query 1");
       console.log(user+"\n");
       return;
 });
 
-// select * from users where city='seoul' order by userid limit 5
-User.find({'city':'seoul'}).sort({'userid':1}).limit(5).exec(function(err,users){
-      console.log("q2");
+// select userid, city from users
+User.find({},{'_id':0, 'userid':1, 'city':1}).exec(function(err,user){
+      console.log("Query 2");
+      console.log(user+"\n");
+      return;
+});
+
+// select * from users where city='seoul' order by userid limit 3
+User.find({'city':'seoul'}).sort({'userid':1}).limit(3).exec(function(err,users){
+      console.log("Query 3");
       console.log(users+"\n");
+      return;
+});
+
+// select userid from users where userid='/user/'
+User.find({'userid':{'$regex':'user'}}).select('userid').exec(function(err,user){
+      console.log("Query 4");
+      console.log(user+"\n");
       return;
 });
 
@@ -108,7 +125,7 @@ User.find({'city':'seoul', 'age':{$gt:10 , $lt:29}})
       .sort({'age':-1})
       .select('userid age')
       .exec(function(err,users){
-           console.log("q3");
+           console.log("Query 5");
            console.log(users+"\n");
            return;
 });
@@ -118,10 +135,10 @@ User.find({'city':'seoul', 'age':{$gt:10 , $lt:29}})
 User.find({})
       .where('city').equals('seoul')
       .where('age').gt(10).lt(29)
-      .sort({'age':-1})
+      .sort({'age':1})
       .select('userid age')
       .exec(function(err,users){
-           console.log("q4");
+           console.log("Query 6");
            console.log(users+"\n");
            return;
 });
