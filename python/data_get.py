@@ -22,7 +22,7 @@ data = json.loads(json.dumps(results_to_json))
 print(type(data))   # dic
 print(data)
 # {'accDefRate': '1.5093139972', 'accExamCnt': '4269316', 'accExamCompCnt': '4092389', 'careCnt': '17897',
-# 'clearCnt': '42953', 'createDt': '2021-01-01 09:36:53.691',                              'deathCnt': '917', 'decideCnt': '61767',
+# 'clearCnt': '42953', 'createDt': '2021-01-01 09:36:53.691', 'deathCnt': '917', 'decideCnt': '61767',
 # 'examCnt': '176927', 'resutlNegCnt': '4030622', 'seq': '372',
 # 'stateDt': '20210101', 'stateTime': '00:00', 'updateDt': '2021-01-03 10:35:39.056'}
 corona=data['response']['body']['items']['item']
