@@ -18,7 +18,7 @@ var app = http.createServer(function(request,response){
     <!doctype html>
     <html>
     <head>
-      <title>WEB1 - ${title}</title>
+      <title>WEB - ${title}</title>
       <meta charset="utf-8">
     </head>
     <body>
@@ -29,9 +29,14 @@ var app = http.createServer(function(request,response){
         <li><a href="/?id=JavaScript">JavaScript</a></li>
       </ol>
       <h2>${title}</h2>
-      <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">Hypertext Markup Language (HTML)</a> is the standard markup language for <strong>creating <u>web</u> pages</strong> and web applications.Web browsers receive HTML documents from a web server or from local storage and render them into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
-      <img src="coding.jpg" width="100%">
-      </p><p style="margin-top:45px;">HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets.
+      <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">Hypertext Markup Language (HTML)</a> is the standard markup language for <strong>creating <u>web</u> pages</strong> and web applications.<br>
+      Web browsers receive HTML documents from a web server or from local storage and render them into multimedia web pages.<br>
+      HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.</p>
+      <p><img src="https://images.squarespace-cdn.com/content/v1/5c72d811d74562103adbe24c/1555785231144-9RV7LO1ER3IZ2MZN365T/code.JPG" height="80%" width="80%"></p>
+      <p style="margin-top:45px;">HTML elements are the building blocks of HTML pages.<br>
+      With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page.<br>
+      It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. <br>
+      HTML elements are delineated by tags, written using angle brackets.<br>
       </p>
     </body>
     </html>
