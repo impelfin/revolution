@@ -28,4 +28,6 @@ connection.end();
   });
 });
 
-app.listen(8080); 
+app.listen(8080, function () {
+  console.log('8080 Port : 서버 실행 중');
+});

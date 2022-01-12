@@ -42,5 +42,5 @@ var app = http.createServer(function(request,response){
 });
 
 app.listen(3000, function () {
-  console.log('서버 실행 중');
+  console.log('3000 Port : 서버 실행 중');
 });

@@ -25,5 +25,5 @@ var mongo = require('./routes/mongo.js');
 app.use('/', mongo);
 
 app.listen(app.get('port'), () =>{
-	console.log('서버 실행 중')
+	console.log('3000 Port : 서버 실행 중')
 });
