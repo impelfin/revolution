@@ -75,11 +75,7 @@ router.post('/update', function(req, res, next) {
       });
 });
 
-<<<<<<< HEAD
 // delete
-=======
-// delte
->>>>>>> 662cd82a4a49945bb242a94867e7458da1756aba
 router.post('/delete', function(req, res, next) {
       var userid = req.body.userid;
       var user = User.find({'userid':userid});
