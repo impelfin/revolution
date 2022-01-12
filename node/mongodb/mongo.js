@@ -46,13 +46,13 @@ app.get('/bios', (req, res) => {
 	})
 });
 
-app.get('/foo', (req, res) => {
+app.get('/seoul', (req, res) => {
 	mongoClient.connect(databaseUrl, function(err, database){
 		if(err != null){
 			res.json({'count':0})
 		}else{
 			db = database.db('test')
-			db.collection('bios').find({}).toArray(function(err, result){
+			db.collection('seoul').find({}).toArray(function(err, result){
 				if(err) throw err
 				console.log('result : ')
 				console.log(result)
@@ -64,4 +64,4 @@ app.get('/foo', (req, res) => {
 
 app.listen(app.get('port'), () =>{
 	console.log('서버 실행 중')
-}); 
+});
