@@ -75,7 +75,7 @@ router.post('/update', function(req, res, next) {
       });
 });
 
-// delte
+// delete
 router.post('/delete', function(req, res, next) {
       var userid = req.body.userid;
       var user = User.find({'userid':userid});

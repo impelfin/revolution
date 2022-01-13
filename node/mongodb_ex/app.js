@@ -145,5 +145,5 @@ app.get('/limit', (req, res) => {
 });
 
 app.listen(app.get('port'), () =>{
-	console.log('서버 실행 중')
+	console.log('3000 Port : 서버 실행 중')
 });
