@@ -19,10 +19,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //mongoose configuration
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mydb');
+mongoose.connect('mongodb://localhost:27017/test');
 
-var mongo = require('./routes/dynamic_mongo.js');
-app.use('/', mongo);
+var dynamic_mongo = require('./routes/dynamic_mongo.js');
+app.use('/', dynamic_mongo);
 
 app.listen(app.get('port'), () =>{
 	console.log('3000 Port : 서버 실행 중')
