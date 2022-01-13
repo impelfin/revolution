@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mongoose Test Example</title>
+</head>
+<body>
+<h1> Mongoose Test Example</h1>
+<form method='post' action='/insert' name='mongoform' >
+      <input type='button' value='MongoDB list'  onclick='location.href="/list"' >
+      <p>
+      user <input type='text' size='10' name='input'>
+      <input type='button' value='get' onclick='location.href="/get?input="+document.mongoform.input.value'>
+      <p>
+</form>
+<iframe name=targetURL class="iframe-preview center" width="30%" height="300px" style="border:none;" src="http://13.125.8.3:3000/list"></iframe>
+
+</body>
+</html>
