@@ -7,11 +7,14 @@
 <body>
 <h1> Mongoose Test Example</h1>
 <form method='post' action='/insert' name='mongoform' >
-      <input type='button' value='MongoDB list'  onclick='location.href="/list"' >
+      <input type='button' value='MongoDB list' onclick='document.targetURL.location.href="/list"'>
       <p>
       user <input type='text' size='10' name='input'>
-      <input type='button' value='get' onclick='location.href="/get?input="+document.mongoform.input.value'>
+      <input type='button' value='get' onclick='document.targetURL.location.href="/get?input="+document.mongoform.input.value'>
       <p>
 </form>
+
+<iframe name=targetURL class="iframe-preview center" width="60%" height="500" style="border:none;" src="http://13.125.8.3:3000/list"></iframe>
+
 </body>
 </html>
