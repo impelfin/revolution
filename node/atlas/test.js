@@ -4,11 +4,7 @@ var data = JSON.stringify({
     "database": "testdb",
     "dataSource": "Cluster0",
     "projection": {
-        "_id": 0,
-        "first_name": 1,
-        "last_name": 1,
-        "email": 1,
-        "gender": 1
+        "_id": 1
     }
 });
 
@@ -18,7 +14,7 @@ var config = {
     headers: {
         'Content-Type': 'application/json',
         'Access-Control-Request-Headers': '*',
-        'api-key': 'jujDBPTl1oc8Ca4Ii6Rsb7UOJPazR1WBvVBVrGondDLXjF9In0i6TxjGpPA2Sd7I'
+        'api-key': '61fc99950752dd835585a006'
     },
     data : data
 };
