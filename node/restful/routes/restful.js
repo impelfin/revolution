@@ -18,4 +18,35 @@ app.get("/Hello", (req, res) => {
   res.send("Hello World!!");
 });
 
+app.get("/api/users", (req, res) => {
+  res.json({ok:true, users:users});
+})
+
+app.get("/api/users/user", (req, res) => {
+  const user_id = req.query.user_id
+  const user = users.filter(data => data.id == user_id);
+  res.json({ok:false, users:user});
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = app;

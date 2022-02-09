@@ -12,9 +12,16 @@
 <form method='post' name='userForm' target='targetURL'>
   <input type='button' value="GET /Hello" onclick='document.targetURL.location.href="/Hello"'>
   <p>
-------------------------------------------------------------------<br>
-<iframe name='targetURL' class="iframe-preview center" width="60%" height="500" style="border:none;" src="http://localhost:3000/Hello">
-</iframe>
+  <input type='button' value="GET /api/users" onclick='document.targetURL.location.href="/api/users"'>
+  <p>
+  id <input type="text" size='10' name='id'>
+  <input type='button' value="GET /api/users/user?params" onclick='document.targetURL.location.href="/api/users/user?user_id="+document.userForm.id.value'>
+  <p>
+  name <input type="text" size='10' name='name'>
+  <input type='button' value="GET /api/users/user?userid & name" onclick='document.targetURL.location.href="/api/users/user?user_id="+document.userForm.id.value+"&name="+document.userForm.name.value'>
 </form>
+------------------------------------------------------------------<br>
+<iframe name=targetURL class="iframe-preview center" width="60%" height="500" style="border:none;" src="http://13.125.8.3:3000/api/users">
+</iframe>
 </body>
 </html>
