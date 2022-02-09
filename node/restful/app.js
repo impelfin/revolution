@@ -17,12 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//mongoose configuration
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/mydb');
-
-var mongo = require('./routes/mongo.js');
-app.use('/', mongo);
+var restful = require('./routes/restful.js');
+app.use('/', restful);
 
 app.listen(app.get('port'), () =>{
 	console.log('3000 Port : 서버 실행 중')
