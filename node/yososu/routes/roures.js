@@ -48,6 +48,7 @@ app.get('/list', function(req, res, next) {
                res.end(template);
       });
 });
+
 app.get("/api/finds",(req,res) => {
   const addr = req.query.addr;
   User.find({'addr' :{$regex:addr}}).select('addr name price inventory').exec(function(err,docs){
