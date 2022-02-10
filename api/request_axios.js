@@ -1,9 +1,7 @@
 const axios = require('axios')
 
 axios
-  .get('https://example.com/todos', {
-    todo: 'Buy the milk'
-  })
+  .get('http://54.180.44.109:3000/api/users')
   .then(res => {
     console.log(`statusCode: ${res.status}`)
     console.log(res)

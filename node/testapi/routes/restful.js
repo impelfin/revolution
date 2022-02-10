@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const axios = require('axios')
-const https = require('https')
 
 const app = express();
 
@@ -23,25 +22,17 @@ app.get("/Hello", (req, res) => {
 
 // request param X, response O
 app.get("/api/users", (req, res) => {
-  const options = {
-    hostname: '54.180.44.109',
-    port: 3000,
-    path: '/api/users',
-    method: 'GET'
-  }
-  req = https.request(options, res => {
-    console.log(`statusCode: ${res.statusCode}`)
-
-    res.on('data', d => {
-      process.stdout.write(d)
+  //res.json({ok:true, users:users});
+  axios
+    .get('http://54.180.44.109:3000/api/users')
+    .then(data => {
+      console.log(`statusCode: ${res.status}`)
+      console.log(data)
+      res.json(users);
     })
-  })
-  req.on('error', error => {
-    console.error(error)
-  })
-
-  req.end();
-  res.json(res);
+    .catch(error => {
+      console.error(error)
+    })
 })
 
 // Query param, request param O, response O
