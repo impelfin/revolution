@@ -1,4 +1,4 @@
-const https = require('https')
+const http = require('http')
 const options = {
   hostname: 'example.com',
   port: 3000,
@@ -6,7 +6,7 @@ const options = {
   method: 'GET'
 }
 
-const req = https.request(options, res => {
+const req = http.request(options, res => {
   console.log(`statusCode: ${res.statusCode}`)
 
   res.on('data', d => {

@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-const axios = require('axios')
+const axios = require('axios');
+const CircularJSON = require('circular-json');
+const request = require('request');
 
 const app = express();
 
@@ -8,12 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
-
-const users = [
-  { id:1, name: "User1"},
-  { id:2, name: "User2"},
-  { id:3, name: "User3"}
-];
 
 // simple api
 app.get("/Hello", (req, res) => {
@@ -25,10 +21,10 @@ app.get("/api/users", (req, res) => {
   //res.json({ok:true, users:users});
   axios
     .get('http://54.180.44.109:3000/api/users')
-    .then(data => {
-      console.log(`statusCode: ${res.status}`)
-      console.log(data)
-      res.json(users);
+    .then(result => {
+      //console.log(`statusCode: ${result.status}`)
+      //console.log(result)
+      res.send(CircularJSON.stringify(result.data.users))
     })
     .catch(error => {
       console.error(error)
@@ -37,9 +33,11 @@ app.get("/api/users", (req, res) => {
 
 // Query param, request param O, response O
 app.get("/api/users/user", (req, res) => {
-  const user_id = req.query.user_id
-  const user = users.filter(data => data.id == user_id);
-  res.json({ok:false, users:user});
+  const urls = "http://54.180.44.109:3000/api/users/user?user_id="+req.query.user_id;
+  request(urls, { json: true }, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body.users))
+  });
 })
 
 // path param, request param O, response O

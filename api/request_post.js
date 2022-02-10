@@ -1,4 +1,4 @@
-const https = require('https')
+const http = require('http')
 
 const data = JSON.stringify({
   todo: 'Buy the milk'
@@ -15,7 +15,7 @@ const options = {
   }
 }
 
-const req = https.request(options, res => {
+const req = http.request(options, res => {
   console.log(`statusCode: ${res.statusCode}`)
 
   res.on('data', d => {
