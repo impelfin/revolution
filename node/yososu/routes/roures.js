@@ -16,7 +16,7 @@ var User = mongoose.model('yososu',userSchema);
 app.get('/list', function(req, res, next) {
       User.find({},function(err,docs){
         if(err) console.log('err');
-               res.writeHead(500);
+               res.writeHead(200);
                var template = `
                <!doctype html>
                <html>
