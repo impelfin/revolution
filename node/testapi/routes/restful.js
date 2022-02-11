@@ -13,7 +13,11 @@ app.use(express.urlencoded({extended : true}));
 
 // simple api
 app.get("/Hello", (req, res) => {
-  res.send("Hello World!!");
+  urls = "http://54.180.44.109:3000/Hello";
+  request(urls, { json: true }, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body))
+  });
 });
 
 // request param X, response O
@@ -33,7 +37,12 @@ app.get("/api/users", (req, res) => {
 
 // Query param, request param O, response O
 app.get("/api/users/user", (req, res) => {
-  const urls = "http://54.180.44.109:3000/api/users/user?user_id="+req.query.user_id;
+  let urls = "";
+  if(req.query.name == null) {
+    urls = "http://54.180.44.109:3000/api/users/user?user_id="+req.query.user_id;
+  } else {
+    urls = "http://54.180.44.109:3000/api/users/user?user_id="+req.query.user_id+"&name="+req.query.name;
+  }
   request(urls, { json: true }, (err, result, body) => {
     if (err) { return console.log(err); }
     res.send(CircularJSON.stringify(body.users))
@@ -42,9 +51,11 @@ app.get("/api/users/user", (req, res) => {
 
 // path param, request param O, response O
 app.get("/api/users/:user_id", (req, res) => {
-  const user_id = req.params.user_id
-  const user = users.filter(data => data.id == user_id);
-  res.json({ok:false, users:user});
+  urls = "http://54.180.44.109:3000/api/users/"+req.params.user_id;
+  request(urls, { json: true }, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body.users))
+  });
 })
 
 // post, request body, response O
