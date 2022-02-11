@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
+let urls = "";
+
 // simple api
 app.get("/Hello", (req, res) => {
   urls = "http://54.180.44.109:3000/Hello";
@@ -37,7 +39,6 @@ app.get("/api/users", (req, res) => {
 
 // Query param, request param O, response O
 app.get("/api/users/user", (req, res) => {
-  let urls = "";
   if(req.query.name == null) {
     urls = "http://54.180.44.109:3000/api/users/user?user_id="+req.query.user_id;
   } else {
@@ -60,50 +61,76 @@ app.get("/api/users/:user_id", (req, res) => {
 
 // post, request body, response O
 app.post("/api/users/userBody", (req, res) => {
-  const user_id = req.body.id
-  const user = users.filter(data => data.id == user_id);
-  res.json({ok:true, users:user});
+  const options = {
+    uri: 'http://54.180.44.109:3000/api/users/userBody',
+    method: 'POST',
+    form: { id: req.body.id }
+  }
+  request.post(options, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body))
+  });
 })
 
 // post, request body, response O
 app.post("/api/users/add", (req, res) => {
-  const { id, name } = req.body
-  const user = users.concat({id, name});
-  res.json({ok:true, users:user});
+  const options = {
+    uri: 'http://54.180.44.109:3000/api/users/add',
+    method: 'POST',
+    form: {
+      id: req.body.id,
+      name: req.body.name
+    }
+  }
+  request.post(options, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body))
+  });
 })
 
 // put, request body, response O
 app.put("/api/users/update", (req, res) => {
-  const { id, name } = req.body
-  const user = users.map(data => {
-    if(data.id == id) data.name = name
-    return {
-      id : data.id,
-      name : data.name
+  const options = {
+    uri: 'http://54.180.44.109:3000/api/users/update',
+    method: 'PUT',
+    form: {
+      id: req.body.id,
+      name: req.body.name
     }
-  })
-  res.json({ok:true, users:user});
+  }
+  request.put(options, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body))
+  });
 })
 
 // patch, request path param & body, response O
 app.patch("/api/user/update/:user_id", (req, res) => {
-  const { user_id } = req.params
-  const { name } = req.body
-  const user = users.map(data => {
-    if(data.id == user_id) data.name = name
-    return {
-      id : data.id,
-      name : data.name
+  const options = {
+    uri: 'http://54.180.44.109:3000/api/user/update/'+req.params.user_id,
+    method: 'PATCH',
+    form: {
+      id: req.body.id,
+      name: req.body.name
     }
-  })
-  res.json({ok:true, users:user});
+  }
+  request.patch(options, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body))
+  });
 })
 
 // delete, request body, response O
 app.delete("/api/user/delete", (req, res) => {
-  const { user_id } = req.body
-  const user = users.filter(data => data.id != user_id);
-  res.json({ok:true, users:user});
+  const options = {
+    uri: 'http://54.180.44.109:3000/api/user/delete',
+    method: 'DELETE',
+    form: { user_id: req.body.user_id }
+  }
+  request.delete(options, (err, result, body) => {
+    if (err) { return console.log(err); }
+    res.send(CircularJSON.stringify(body))
+  });
 })
 
 module.exports = app;
