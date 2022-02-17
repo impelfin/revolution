@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ESP WebServer</title>
+</head>
+<body>
+<h1> ESP WebServer </h1>
+------------------------------------------------------------------<br>
+<form method='post' action='/Hello' name='userForm' target='targetURL'>
+  <input type='button' value="GET /Hello" onclick='document.targetURL.location.href="/Hello"'>
+  <p>
+------------------------------------------------------<br>
+<iframe name=targetURL class="iframe-preview center" width="90%" height="500" style="border:none;" src="http://13.125.8.3:3000/Hello">
+</iframe>
+</body>
+</html>
