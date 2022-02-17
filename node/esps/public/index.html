@@ -10,9 +10,11 @@
 <form method='post' action='/post-sensor' name='userForm' target='targetURL'>
   <input type='button' value="GET /Hello" onclick='document.targetURL.location.href="/Hello"'>
   <p>
+  <input type='button' value="POST /post-sensor" onclick='document.targetURL.location.href="/post-sensor"'>
+  <p>
 </form>
 ------------------------------------------------------------------<br>
-<iframe name=targetURL class="iframe-preview center" width="90%" height="500" style="border:none;" src="http://13.125.8.3:3000/api/users">
+<iframe name=targetURL class="iframe-preview center" width="90%" height="500" style="border:none;" src="http://13.125.8.3:3000/post-sensor">
 </iframe>
 </body>
 </html>
