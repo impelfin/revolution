@@ -15,14 +15,16 @@ app.get("/Hello", (req, res) => {
 
 // post, request body, response O
 app.get("/get-sensor", (req, res) => {
-  console.log(req.query.temperature);
+  const temperature = req.query.temperature;
+  console.log("value : "+temperature);
+  res.json({ok:get, value : temperature});
 })
 
 // post, request body, response O
 app.post("/post-sensor", (req, res) => {
   const { sensor_number, value } = req.body;
   console.log("sensor_number : "+sensor_number+" / value : "+value);
-  res.json({ok:true, sensor_number:sensor_number, value : value});
+  res.json({ok:post, sensor_number:sensor_number, value : value});
 })
 
 module.exports = app;
