@@ -19,10 +19,4 @@ app.post("/postplain", (req, res) => {
   res.json(req.body);
 })
 
-// post, request body, response O
-app.get("/postplainget", (req, res) => {
-  res.json(req.body);
-})
-
-
 module.exports = app;
