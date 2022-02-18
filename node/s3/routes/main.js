@@ -21,7 +21,7 @@ var storage  = multer.diskStorage({
 var upload = multer({ dest: 'uploadedFiles/' });
 var uploadWithOriginalFilename = multer({ storage: storage });
 
-router.get('/', function(req,res){
+router.get('/', function(req,res) {
   res.render('upload');
 });
 
