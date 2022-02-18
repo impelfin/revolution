@@ -108,12 +108,12 @@ app.post('/uploadFile', uploadWithOriginalFilename.single('attachment'), functio
 app.post('/downloadFile', function(req,res){
   var filename = req.body.dlKey;
   console.log(filename);
-
-  //s3 download
+  // s3 download
   const downloadFile = (filename) => {
     const params = {
       Bucket: BUCKET_NAME,
-      Key: filename
+      Key: filename,
+      ResponseContentDisposition: 'attachment; filename ="' + req.file.originalname + '"'
     };
     s3.getObject(params, function(err, data) {
       if (err) { return console.log(err); }
