@@ -57,6 +57,7 @@ app.get("/list", (req, res) => {
             <th> Size </th>
             <th> StorageClass </th>
             <th> Down </th>
+            <th> Del </th>
           </tr>
       `;
       for(var i=0;i<data.Contents.length;i++) {
@@ -69,6 +70,11 @@ app.get("/list", (req, res) => {
             <th>
             <form method='post' action='/downloadFile'>
             <button type="submit" name='dlKey' value=${data.Contents[i]['Key']}>down</button>
+            </form>
+            </th>
+            <th>
+            <form method='post' action='/deleteFile'>
+            <button type="submit" name='dlKey' value=${data.Contents[i]['Key']}>del</button>
             </form>
             </th>
           </tr>
@@ -122,6 +128,26 @@ app.post('/downloadFile', function(req,res){
     });
   }
   downloadFile(filename);
+});
+
+app.post('/deleteFile', function(req,res){
+  var filename = req.body.dlKey;
+  console.log(filename);
+  // s3 download
+  //const deleteFile = (filename) => {
+    const params = {
+      Bucket: BUCKET_NAME,
+      Key: filename
+    };
+    s3.deleteObject(params, function(err, data) {
+      if (err) { return console.log(err); }
+      // res.attachment(filename);
+      res.send(data.Body);
+      res.end();
+      //console.log(data);
+    });
+  //}
+  //deleteFile(filename);
 });
 
 module.exports = app;
