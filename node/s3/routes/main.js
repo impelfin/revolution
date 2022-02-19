@@ -39,7 +39,7 @@ app.get("/list", (req, res) => {
   }
   s3.listObjects(params, function (err, data) {
     if(err)throw err;
-    console.log(data);
+    //console.log(data);
     //res.json(data.Contents);
     res.writeHead(200);
       var template = `
@@ -92,7 +92,7 @@ app.get("/list", (req, res) => {
 app.post('/uploadFile', uploadWithOriginalFilename.single('attachment'), function(req,res){
   res.render('confirmation', { file:req.file, files:null });
 
-  //s3 upload
+  //s3 uploadFile
   console.log(req.file.filename);
   const filename = req.file.filename;
   const file = 'uploadedFiles/'+filename;
@@ -114,7 +114,7 @@ app.post('/uploadFile', uploadWithOriginalFilename.single('attachment'), functio
 app.post('/downloadFile', function(req,res){
   var filename = req.body.dlKey;
   console.log(filename);
-  // s3 download
+  // s3 downloadFile
   const downloadFile = (filename) => {
     const params = {
       Bucket: BUCKET_NAME,
@@ -133,21 +133,21 @@ app.post('/downloadFile', function(req,res){
 app.post('/deleteFile', function(req,res){
   var filename = req.body.dlKey;
   console.log(filename);
-  // s3 download
-  //const deleteFile = (filename) => {
+
+  // s3 deleteFile
+  const deleteFile = (filename) => {
     const params = {
       Bucket: BUCKET_NAME,
       Key: filename
     };
     s3.deleteObject(params, function(err, data) {
       if (err) { return console.log(err); }
-      // res.attachment(filename);
-      res.send(data.Body);
-      res.end();
       //console.log(data);
+      res.send(data.Body);
+      res.end;
     });
-  //}
-  //deleteFile(filename);
+  }
+  deleteFile(filename);
 });
 
 module.exports = app;
