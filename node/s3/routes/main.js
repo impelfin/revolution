@@ -3,6 +3,7 @@ const app        = express.Router();
 const bodyParser = require('body-parser');
 const multer     = require('multer');
 const fs         = require('fs');
+const path       = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
@@ -10,8 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 const AWS = require('aws-sdk');
-const ID = 'AKIA234P44R3QOS57UMR';
-const SECRET = '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';
+const ID = 'AKIA234P44R3XTHZROXC';
+const SECRET = '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';
 const BUCKET_NAME = 'impelfin-bucket';
 const MYREGION = 'ap-northeast-2'
 const s3 = new AWS.S3({accessKeyId: ID, secretAccessKey: SECRET, region: MYREGION});
@@ -109,6 +110,9 @@ app.post('/uploadFile', uploadWithOriginalFilename.single('attachment'), functio
     });
   }
   uploadFile(file);
+
+  const filePath = path.join(__dirname, '../uploadedFiles', filename);
+  fs.unlink(filePath, (err) => err ? console.log(err) : console.log(`File delete successfully. ${filePath}`));
 });
 
 app.post('/downloadFile', function(req,res){
@@ -142,9 +146,8 @@ app.post('/deleteFile', function(req,res){
     };
     s3.deleteObject(params, function(err, data) {
       if (err) { return console.log(err); }
-      //console.log(data);
-      res.send(data.Body);
-      res.end;
+      console.log(data);
+      res.redirect('/list');
     });
   }
   deleteFile(filename);
