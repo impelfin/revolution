@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 const AWS = require('aws-sdk');
-const ID = 'AKIA234P44R3XTHZROXC';
-const SECRET = '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';
+const ID = 'xxx';
+const SECRET = 'xxx';
 const BUCKET_NAME = 'impelfin-bucket';
 const MYREGION = 'ap-northeast-2'
 const s3 = new AWS.S3({accessKeyId: ID, secretAccessKey: SECRET, region: MYREGION});
@@ -109,7 +109,7 @@ app.post('/uploadFile', uploadWithOriginalFilename.single('attachment'), functio
       console.log(`File uploaded successfully. ${data.Location}`);
     });
   }
-  uploadFile(file);
+  uploadFile(filename);
 
   const filePath = path.join(__dirname, '../uploadedFiles', filename);
   fs.unlink(filePath, (err) => err ? console.log(err) : console.log(`File delete successfully. ${filePath}`));
