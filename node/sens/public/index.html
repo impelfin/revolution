@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SMS API Example</title>
+</head>
+<body>
+------------------------------------------------------------------<br>
+<h4>SMS API Example</h4>
+------------------------------------------------------------------<br>
+<form method='post' action='/send_sms' name='userForm' target='targetURL'>
+  Name <input type="text" size='15' name='name'><p>
+  Phone_number <input type="text" size='15' name='phone_number'><p>
+  Massage <input type="text" size='20' name='msg'><p>
+  <button type="submit" name='btn'> Send SMS </button>
+</form>
+------------------------------------------------------------------<br>
+<iframe name=targetURL class="iframe-preview center" width="90%" height="500" style="border:none;" src="http://3.35.1119.216:3000/Hello">
+</iframe>
+</body>
+</html>
