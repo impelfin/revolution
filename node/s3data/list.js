@@ -1,7 +1,7 @@
 const fs = require('fs');
 const AWS =  require('aws-sdk');
 const BUCKET_NAME = 's3-028bucket';
-const s3 = new AWS.S3({accessKeyId: 'AKIA234P44R3U6UWYGRJ', secretAccessKey:'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'});
+const s3 = new AWS.S3({accessKeyId: 'accessKeyId', secretAccessKey:'secretAccessKey'});
 
 app.get("/list", (req, res) => {
   var params = {

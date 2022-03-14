@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 const AWS = require('aws-sdk');
-const ID = 'AKIA234P44R3USQLIGRA';
-const SECRET = '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';
+const ID = 'id';
+const SECRET = 'secretAccessKey';
 const BUCKET_NAME = 'my-028bucket';
 const MYREGION = 'ap-northeast-2'
 const s3 = new AWS.S3({accessKeyId: ID, secretAccessKey: SECRET, region: MYREGION});
