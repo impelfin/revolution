@@ -5,11 +5,12 @@ const app = express()
 // 회원인증
 app.post('/login', (req, res) => {
   var url = "http://3.35.119.216:8080/wp-json/wp/v2/users";
-  username = "root";
-  email = "impelfin@gmail.com"
-  password = "1234";
-  var auth = "Basic " + new Buffer(username + ":" + email + ":"+ password).toString("base64");
+  // username = "root";
+  // email = "impelfin@gmail.com"
+  // password = "1234";
+  // var auth = "Basic " + new Buffer(username + ":" + email + ":"+ password).toString("base64");
 
+  var auth = "Basic " + new Buffer(req.body.username + ":" + req.body.email + ":"+ req.body.password).toString("base64");
   const options = {
     uri:url,
     method:'POST',
