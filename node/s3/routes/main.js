@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const multer     = require('multer');
 const fs         = require('fs');
 const path       = require('path');
+const env        = require("dotenv").config({ path: "../../../.env"});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
@@ -11,8 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 const AWS = require('aws-sdk');
-const ID = 'id';
-const SECRET = 'secretAccessKey';
+const ID = 'process.env.ID;';
+const SECRET = 'process.env.SECRET';
 const BUCKET_NAME = 'my-028bucket';
 const MYREGION = 'ap-northeast-2'
 const s3 = new AWS.S3({accessKeyId: ID, secretAccessKey: SECRET, region: MYREGION});
