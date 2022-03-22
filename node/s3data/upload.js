@@ -1,7 +1,12 @@
 const fs = require('fs');
+const env = require("dotenv").config({ path: "../../../.env"});
+
 const AWS =  require('aws-sdk');
+const ID = 'process.env.ID';
+const SECRET = 'process.env.SECRET';
 const BUCKET_NAME = 's3-028bucket';
-const s3 = new AWS.S3({accessKeyId: 'accessKeyId', secretAccessKey:'secretAccessKey'});
+const MYREGION = 'ap-northeast-2'
+const s3 = new AWS.S3({accessKeyId: ID, secretAccessKey: SECRET, region: MYREGION});
 
 const uploadFile = (fileName) => {
   const fileContent = fs.readFileSync(fileName);

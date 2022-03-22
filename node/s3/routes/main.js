@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 const AWS = require('aws-sdk');
-const ID = 'process.env.ID;';
+const ID = 'process.env.ID';
 const SECRET = 'process.env.SECRET';
 const BUCKET_NAME = 'my-028bucket';
 const MYREGION = 'ap-northeast-2'
