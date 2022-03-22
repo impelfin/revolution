@@ -1,9 +1,14 @@
-var express   = require('express');
-var app       = express();
-var fs        = require('fs');
+const express   = require('express');
+const app       = express();
+const fs        = require('fs');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.set('view engine', 'ejs');
 
 // Routes
