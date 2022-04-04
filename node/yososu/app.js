@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://3.38.82.20:27017/yososu');
 
-var roures = require('./routes/roures.js');
+var roures = require('./routes/routes.js');
 app.use('/', roures);
 
 app.listen(app.get('port'), () =>{
