@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-// const send_message = require('../sens/sens')
-=======
->>>>>>> 8a84c9126950f1e4d87284e1b07efe2988c0caf4
 const express = require("express");
 const bodyParser = require('body-parser');
 const request = require('request');
-
+const env = require("dotenv").config({ path: "../../../.env"});
 const app = express();
 
 //create signature2
@@ -31,17 +27,10 @@ app.post("/send_sms", (req, res) => {
     const date = Date.now().toString();
 
     // 환경변수로 저장했던 중요한 정보들
-<<<<<<< HEAD
-    const serviceId = 'serviceID';
-    const accessKey = 'accessKey';
-    const secretKey = 'secretKey';
-    const my_number = '01082882075';
-=======
-    const serviceId = '서비스ID';
-    const accessKey = '액세스키';
-    const secretKey = '시크릿키';
-    const my_number = '본인 번호';
->>>>>>> 8a84c9126950f1e4d87284e1b07efe2988c0caf4
+    const serviceId = process.env.ServiceId;
+    const accessKey = process.env.AccessKey;
+    const secretKey = process.env.SecretKey;
+    const my_number = process.env.My_number;
 
     // 그 외 url 관련
     const method = "POST";
@@ -76,11 +65,7 @@ app.post("/send_sms", (req, res) => {
     			'type' : 'SMS',
     			'countryCode' : '82',
     			'from' : my_number,
-<<<<<<< HEAD
-    			'content' : `${user_name}의 메시지 ${user_msg}`,
-=======
     			'content' : `${user_name} 발송 메시지 ${user_msg}`,
->>>>>>> 8a84c9126950f1e4d87284e1b07efe2988c0caf4
     			'messages' : [
     				{
     					'to' : `${user_phone_number}`
