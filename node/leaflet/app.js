@@ -18,8 +18,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //routes setup
-var restful = require('./routes/restful.js');
-app.use('/', restful);
+var leaflet = require('./routes/leaflet.js');
+app.use('/', leaflet);
 
 app.listen(app.get('port'), () =>{
 	console.log('3000 Port : 서버 실행 중')
