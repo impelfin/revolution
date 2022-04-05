@@ -18,8 +18,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //routes setup
-var esps = require('./routes/esps.js');
-app.use('/', esps);
+var httpserver = require('./routes/httpserver.js');
+app.use('/', httpserver);
 
 app.listen(app.get('port'), () =>{
 	console.log('3000 Port : 서버 실행 중')
