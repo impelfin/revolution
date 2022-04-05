@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const router = express.Router();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('public', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 3000)
 
