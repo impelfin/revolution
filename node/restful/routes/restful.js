@@ -1,7 +1,7 @@
 //express 모듈 불러오기
 const express = require("express");
 const bodyParser = require('body-parser');
-const dfd = require('danfojs-node');
+const dfd = require('dataframe-js');
 
 //express 사용
 const app = express();
@@ -46,7 +46,8 @@ app.get("/api/users", (req, res) => {
     //res.json({ok: true, users: users});
 
     let df = new dfd.DataFrame(users);
-    df.print();
+    result = df.toJSON(users);
+    df.show();
     res.writeHead(200);
     var template = `
     <!doctype html>
@@ -55,7 +56,7 @@ app.get("/api/users", (req, res) => {
     <meta charset="utf-8">
     </head>
     <body>
-      ${df}
+      ${result}
     </body>
     </html>
    `;
