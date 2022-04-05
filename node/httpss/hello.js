@@ -12,8 +12,6 @@ const options = {
 const app = express();
 
 // Create an HTTP service.
-http.createServer(app).listen(80){
-  console.log('Server started!!');
-};
+http.createServer(app).listen(80);
 // Create an HTTPS service identical to the HTTP service.
 https.createServer(options, app).listen(443);
