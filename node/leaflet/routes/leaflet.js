@@ -9,8 +9,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 // simple api
-app.get("/Hello", (req, res) => {
-  res.send("Hello World!!");
+app.get('/', function(req, res) {
+  res.render('index', {
+  	title: 'leaflet'
+  });
 });
 
 module.exports = app;
