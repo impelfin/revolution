@@ -6,10 +6,10 @@ const fs = require('fs');
 const HTTP_PORT = 80;
 const HTTPS_PORT = 443;
 
-// const options = {
-//   key: fs.readFileSync('./rootca.key'),
-//   cert: fs.readFileSync('./rootca.crt')
-// };
+const options = {
+  key: fs.readFileSync('./rootca.key'),
+  cert: fs.readFileSync('./rootca.crt')
+};
 
 const app = express();
 
