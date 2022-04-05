@@ -22,4 +22,4 @@ app.get('/', (req, res) => {
 http.createServer(app).listen(HTTP_PORT);
 
 // Create an HTTPS server.
-https.createServer(app).listen(HTTPS_PORT);
+https.createServer(options, app).listen(HTTPS_PORT);
