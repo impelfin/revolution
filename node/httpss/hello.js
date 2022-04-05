@@ -1,17 +1,25 @@
 const express = require('express');
-const https = require('https');
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 
+const HTTP_PORT = 80;
+const HTTPS_PORT = 443;
+
 const options = {
-  key: fs.readFileSync('../../.config/myaws_key.pem'),
-//  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.cert')
+  key: fs.readFileSync('./rootca.key'),
+  cert: fs.readFileSync('./rootca.crt')
 };
 
-// Create a service (the app object is just a callback).
 const app = express();
 
-// Create an HTTP service.
-http.createServer(app).listen(80);
-// Create an HTTPS service identical to the HTTP service.
-https.createServer(options, app).listen(443);
+// Default route for server status
+app.get('/', (req, res) => {
+  res.json({ message: `Server is running on port ${req.secure ? HTTPS_PORT : HTTP_PORT}` });
+});
+
+// Create an HTTP server.
+http.createServer(app).listen(HTTP_PORT);
+
+// Create an HTTPS server.
+https.createServer(options, app).listen(HTTPS_PORT);
