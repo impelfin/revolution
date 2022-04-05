@@ -6,10 +6,10 @@ const fs = require('fs');
 const HTTP_PORT = 80;
 const HTTPS_PORT = 443;
 
-const options = {
-  key: fs.readFileSync('./rootca.key'),
-  cert: fs.readFileSync('./rootca.crt')
-};
+// const options = {
+//   key: fs.readFileSync('./rootca.key'),
+//   cert: fs.readFileSync('./rootca.crt')
+// };
 
 const app = express();
 
@@ -22,4 +22,4 @@ app.get('/', (req, res) => {
 http.createServer(app).listen(HTTP_PORT);
 
 // Create an HTTPS server.
-https.createServer(options, app).listen(HTTPS_PORT);
+https.createServer(app).listen(HTTPS_PORT);
