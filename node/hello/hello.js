@@ -6,5 +6,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000, function () {
-  console.log('3000 Port : 서버 실행 중');
+ console.log('3000 Port : 서버 실행 중');
 });
