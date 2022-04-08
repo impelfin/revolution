@@ -17,9 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//routes setup
-var httpserver = require('./routes/httpserver.js');
-app.use('/', httpserver);
+var remoteapi = require('./routes/remoteapi.js');
+app.use('/', remoteapi);
 
 app.listen(app.get('port'), () =>{
 	console.log('3000 Port : 서버 실행 중')

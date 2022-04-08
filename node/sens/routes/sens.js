@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const request = require('request');
-
+const env = require("dotenv").config({ path: "../../../.env"});
 const app = express();
 
 //create signature2
@@ -27,10 +27,10 @@ app.post("/send_sms", (req, res) => {
     const date = Date.now().toString();
 
     // 환경변수로 저장했던 중요한 정보들
-    const serviceId = '서비스ID';
-    const accessKey = '액세스키';
-    const secretKey = '시크릿키';
-    const my_number = '본인 번호';
+    const serviceId = process.env.ServiceId;
+    const accessKey = process.env.AccessKey;
+    const secretKey = process.env.SecretKey;
+    const my_number = process.env.My_number;
 
     // 그 외 url 관련
     const method = "POST";

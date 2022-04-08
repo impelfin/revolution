@@ -8,7 +8,7 @@ const router = express.Router();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 3000)
 
 app.use(morgan('dev'));
@@ -18,8 +18,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //routes setup
-var httpserver = require('./routes/httpserver.js');
-app.use('/', httpserver);
+var main = require('./routes/main.js');
+app.use('/', main);
 
 app.listen(app.get('port'), () =>{
 	console.log('3000 Port : 서버 실행 중')

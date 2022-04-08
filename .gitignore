@@ -3,3 +3,6 @@
 
 # nodejs node_modules files
 node/*/node_modules
+
+# aws pem files
+.config/myaws_key.pem
