@@ -9,8 +9,6 @@ var corsOptions = {
   origin : "http://3.35.119.216:3000"
 }
 
-var result = {};
-
 app.use(cors(corsOptions));
 
 var pool = mysql.createPool(db);
@@ -29,12 +27,10 @@ app.get('/api/info', (req, res) => {
       console.log('Database Connection Success~!!');
       conn.query("select * from user_info", (err, data) => {
         console.log(data);
-        result = data;
       });
     }
     conn.release();
   });
-  res.send(result);
 })
 
 app.listen(PORT, () => {
