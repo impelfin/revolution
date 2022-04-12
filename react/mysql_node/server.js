@@ -15,10 +15,12 @@ var pool = mysql.createPool(db);
 
 app.get('/', (req, res) => {
   res.send('Server Response Success');
+  console.log('Server Response Success');
 })
 
 app.get('/hello', (req, res) => {
   res.send({ hello : 'Hello react' });
+  console.log({ hello : 'Hello react' });
 })
 
 app.get('/api/info', (req, res) => {
@@ -26,7 +28,11 @@ app.get('/api/info', (req, res) => {
     if (!err) {
       console.log('Database Connection Success~!!');
       conn.query("select * from user_info", (err, data) => {
-        console.log(data);
+        if (!err) {
+          res.send({data: data});
+          console.log({data: data});
+        }
+        else res.send(err);
       });
     }
     conn.release();
