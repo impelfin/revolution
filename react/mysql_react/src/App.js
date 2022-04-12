@@ -4,7 +4,9 @@ import axios from 'axios';
 const hellow = () => {
   return (
     <div>
-      <button onClick = {() => { return onDataHandler()}}> Get Data </button>
+      <button onClick = {() => {
+        return onDataHandler().then(alert);
+      }}> Get Data </button>
     </div>
   );
 }
@@ -18,8 +20,13 @@ function onDataHandler() {
     responseType : 'json',
     responseEncoding : 'json',
   })
-  const res = axiosSet.get('/api/info');
-  console.log(res.data);
+  try {
+    const result = axiosSet.get('/api/info');
+    console.log(result);
+    return result;
+  } catch (error) {
+    return error
+  }
 }
 
 export default hellow;
