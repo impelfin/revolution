@@ -30,7 +30,7 @@ app.get("/api/users", (req, res) => {
     .then(result => {
       //console.log(`statusCode: ${result.status}`)
       //console.log(result)
-      res.send(CircularJSON.stringify(result.data.users))
+      res.send(CircularJSON.stringify(result.data))
     })
     .catch(error => {
       console.error(error)
@@ -46,7 +46,7 @@ app.get("/api/users/user", (req, res) => {
   }
   request(urls, { json: true }, (err, result, body) => {
     if (err) { return console.log(err); }
-    res.send(CircularJSON.stringify(body.users))
+    res.send(CircularJSON.stringify(body))
   });
 })
 
@@ -55,7 +55,7 @@ app.get("/api/users/:user_id", (req, res) => {
   urls = "http://54.180.44.109:3000/api/users/"+req.params.user_id;
   request(urls, { json: true }, (err, result, body) => {
     if (err) { return console.log(err); }
-    res.send(CircularJSON.stringify(body.users))
+    res.send(CircularJSON.stringify(body))
   });
 })
 
